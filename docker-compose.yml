@@ -1,0 +1,18 @@
+version: "3.5"
+
+services:
+  app:
+    build:
+      context: .
+      target: php
+      dockerfile: Dockerfile
+    volumes:
+      - code:/app
+
+volumes:
+  code:
+    driver: local
+    driver_opts:
+      type: none
+      device: ${PWD}
+      o: bind

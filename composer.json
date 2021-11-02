@@ -1,0 +1,27 @@
+{
+  "name": "hicoh/event-maanger-service",
+  "version": "1.0.0",
+  "description": "The Laravel Framework.",
+  "keywords": [
+    "event-manager-service"
+  ],
+  "require": {
+    "php": "^7.4.0",
+    "hicoh/event-manager-client": "1.0.12"
+  },
+  "require-dev": {
+    "phpunit/phpunit" : "^9.5",
+    "friendsofphp/php-cs-fixer": "^3.0",
+    "php-parallel-lint/php-parallel-lint": "^1.2",
+    "phpstan/phpstan": "^0.12.42"
+  },
+  "autoload": {
+    "psr-4": { "HiCo\\EventManagerService\\" : "src//" }
+  },
+  "repositories": {
+    "event-manager-client": {
+      "type": "git",
+      "url": "https://github.com/hicoh/event-manager-client"
+    }
+  }
+  }
