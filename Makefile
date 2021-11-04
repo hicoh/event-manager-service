@@ -1,6 +1,6 @@
 SERVICE_TARGET := app
 
-FILE:=composer.json
+FILE:=version.json
 PACKAGE_VERSION:=$(shell cat $(FILE) | grep version| tr -d 'version: [[:space:]],')
 PHPEXEC=docker-compose exec app
 
