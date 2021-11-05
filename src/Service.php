@@ -82,13 +82,13 @@ class Service
     /**
      * @param string $id
      *
-     * @return object
+     * @return array
      * @throws ApiException
      */
-    public function getKey(string $id): object
+    public function getKey(string $id): array
     {
         $apInstance = new KeyApi($this->client, self::$config);
 
-        return $apInstance->getKey($id);
+        return json_decode($apInstance->getKey($id)[0], true);
     }
 }
