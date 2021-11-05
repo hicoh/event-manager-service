@@ -13,6 +13,7 @@ use HiCo\EventManagerClient\Model\UpdateEventRequest;
 use HiCo\EventManagerClient\Service\EventApi;
 use HiCo\EventManagerClient\Service\EventEntityApi;
 use HiCo\EventManagerClient\Service\JobApi;
+use HiCo\EventManagerClient\Service\KeyApi;
 
 class Service
 {
@@ -76,5 +77,18 @@ class Service
                 $apiInstance->updateEventEntity($updateEventEntity);
             }
         }
+    }
+
+    /**
+     * @param string $id
+     *
+     * @return object
+     * @throws ApiException
+     */
+    public function getKey(string $id): object
+    {
+        $apInstance = new KeyApi($this->client, self::$config);
+
+        return $apInstance->getKey($id);
     }
 }
