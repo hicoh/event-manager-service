@@ -1,16 +1,16 @@
 <?php
 
-namespace HiCo\Message\Unit\Serializer;
+namespace Unit;
 
 use HiCo\EventManagerService\Service;
 use PHPUnit\Framework\TestCase;
 
-class MessageSerializerTest extends TestCase
+class ServiceTest extends TestCase
 {
     public function testConstruct()
     {
         $test = new Service();
         var_dump($test->getConfig());
-        $this->assertEquals($test->getConfig()->getHost(), 'test');
+        $this->assertEquals($test->getConfig()->getHost(), false);
     }
 }
