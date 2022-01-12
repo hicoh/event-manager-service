@@ -6,7 +6,6 @@ use GuzzleHttp\Client as GuzzleClient;
 use HiCo\EventManagerClient\ApiException;
 use HiCo\EventManagerClient\Service\KeyApi;
 
-
 class KeyService
 {
     private Client $client;
@@ -17,9 +16,6 @@ class KeyService
     }
 
     /**
-     * @param string $id
-     *
-     * @return array
      * @throws ApiException
      */
     public function getKey(string $id): array

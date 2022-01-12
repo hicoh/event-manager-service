@@ -6,6 +6,7 @@ use GuzzleHttp\Client as GuzzleClient;
 use HiCo\EventManagerClient\ApiException;
 use HiCo\EventManagerClient\Model\AsyncResponse;
 use HiCo\EventManagerClient\Model\JobRequest;
+use HiCo\EventManagerClient\Model\UpdateJobRequest;
 use HiCo\EventManagerClient\Service\JobApi;
 
 class JobService
@@ -28,6 +29,13 @@ class JobService
         $jobRequest = (new JobRequest())->setStreamId($streamId)->setPayloadInList($payloadInList);
 
         return $apiInstance->createJob($jobRequest);
+    }
+
+    public function updateJob(string $id, string $status, string $message)
+    {
+        $apiInstance = new JobApi($this->client::getClient(), $this->client::getConfig());
+        $updateJobRequest = new UpdateJobRequest(['id' => $id, 'status' => $status, 'message' => $message]);
+        $apiInstance->updateJob($updateJobRequest);
     }
 
     public function deleteJob(?string $organisationId, ?string $id, string $streamId, ?string $status, ?string $dueAt): void
