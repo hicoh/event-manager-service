@@ -5,7 +5,6 @@ namespace HiCo\EventManagerService;
 use GuzzleHttp\Client as GuzzleClient;
 use HiCo\EventManagerClient\Service\OrganisationApi;
 
-
 class OrganisationService
 {
     private Client $client;
@@ -21,5 +20,4 @@ class OrganisationService
 
         $apiInstance->createOrganisationIndex($organisationId);
     }
-
 }

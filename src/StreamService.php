@@ -55,12 +55,7 @@ class StreamService
     {
         $apiInstance = new StreamApi($this->client::getClient(), $this->client::getConfig());
         try {
-            if (
-                ($scheduleConfiguration = $apiInstance->getScheduleConfiguration($streamId, $organisationId)) &&
-                $scheduleConfiguration instanceof ScheduleConfiguration
-            ) {
-                return $scheduleConfiguration;
-            }
+                return $apiInstance->getScheduleConfiguration($streamId, $organisationId);
         } catch (ApiException $exception) {
             if (404 !== $exception->getCode()) {
                 throw $exception;
