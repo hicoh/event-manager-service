@@ -6,11 +6,11 @@ use GuzzleHttp\Client as GuzzleClient;
 use HiCo\EventManagerClient\ApiException;
 use HiCo\EventManagerClient\Model\Event;
 use HiCo\EventManagerClient\Model\ReplicateEventRequest;
+use HiCo\EventManagerClient\Model\UpdateChildEventRequest;
 use HiCo\EventManagerClient\Model\UpdateEventEntityRequest;
 use HiCo\EventManagerClient\Model\UpdateEventRequest;
 use HiCo\EventManagerClient\Service\EventApi;
 use HiCo\EventManagerClient\Service\EventEntityApi;
-
 
 class EventService
 {
@@ -38,6 +38,26 @@ class EventService
             $apiInstance = new EventApi($this->client::getClient(), $this->client::getConfig());
             $apiInstance->updateEvent($updateEventRequest);
         }
+    }
+
+    public function updateChildEvent(
+        string $organisationId,
+        string $parentId,
+        string $entityName,
+        string $status,
+        string $message,
+        string $destinationId
+    ) {
+        $apiInstance = new EventApi(
+            $this->client::getClient(),
+            $this->client::getConfig(),
+        );
+        $request = (new UpdateChildEventRequest())->setParentId($parentId)
+            ->setEntityName($entityName)
+            ->setStatus($status)
+            ->setMessage($message)
+            ->setDestinationId($destinationId);
+        $apiInstance->updateChildEvent($request, $organisationId);
     }
 
     /**
