@@ -6,6 +6,7 @@ use GuzzleHttp\Client as GuzzleClient;
 use HiCo\EventManagerClient\ApiException;
 use HiCo\EventManagerClient\Model\AsyncResponse;
 use HiCo\EventManagerClient\Model\JobRequest;
+use HiCo\EventManagerClient\Model\SourceJobRequest;
 use HiCo\EventManagerClient\Model\UpdateJobRequest;
 use HiCo\EventManagerClient\Service\JobApi;
 
@@ -42,5 +43,13 @@ class JobService
     {
         $apiInstance = new JobApi($this->client::getClient(), $this->client::getConfig());
         $apiInstance->deleteJob($organisationId, $id, $streamId, $status, $dueAt);
+    }
+
+    public function sendJobToSource(string $organisationId, string $streamId, ?string $originalJobId, ?string $settings): AsyncResponse
+    {
+        $apiInstance = new JobApi($this->client::getClient(), $this->client::getConfig());
+        $jobRequest = (new SourceJobRequest())->setStreamId($streamId)->setOriginalJobId($originalJobId)->setSettings($settings);
+
+        return $apiInstance->createSourceJob($organisationId, $jobRequest);
     }
 }
