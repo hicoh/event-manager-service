@@ -79,7 +79,7 @@ class EventService
     {
         $apiInstance = new EventApi($this->client::getClient(), $this->client::getConfig());
         $replicateEventRequest = (new ReplicateEventRequest())
-            ->setOriginalEventId($originalEventId)->setJobId($jobId)->setPayloadIn($payloadIn);
+            ->setOriginalEventId($originalEventId)->setPayloadIn($payloadIn);
         $apiInstance->replicateEvent($organisationId, $replicateEventRequest);
     }
 }
