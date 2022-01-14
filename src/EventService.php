@@ -4,6 +4,7 @@ namespace HiCo\EventManagerService;
 
 use GuzzleHttp\Client as GuzzleClient;
 use HiCo\EventManagerClient\ApiException;
+use HiCo\EventManagerClient\Model\AsyncResponse;
 use HiCo\EventManagerClient\Model\Event;
 use HiCo\EventManagerClient\Model\ReplicateEventRequest;
 use HiCo\EventManagerClient\Model\UpdateChildEventRequest;
@@ -75,11 +76,14 @@ class EventService
         }
     }
 
-    public function replicateEvent(?string $organisationId, string $jobId, string $originalEventId, object $payloadIn)
+    /**
+     * @throws ApiException
+     */
+    public function replicateEvent(?string $organisationId, string $originalEventId, object $payloadIn): AsyncResponse
     {
         $apiInstance = new EventApi($this->client::getClient(), $this->client::getConfig());
-        $replicateEventRequest = (new ReplicateEventRequest())
-            ->setOriginalEventId($originalEventId)->setJobId($jobId)->setPayloadIn($payloadIn);
-        $apiInstance->replicateEvent($organisationId, $replicateEventRequest);
+        $replicateEventRequest = (new ReplicateEventRequest())->setOriginalEventId($originalEventId)->setPayloadIn($payloadIn);
+
+        return $apiInstance->replicateEvent($organisationId, $replicateEventRequest);
     }
 }
