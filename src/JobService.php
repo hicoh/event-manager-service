@@ -32,11 +32,11 @@ class JobService
         return $apiInstance->createJob($jobRequest);
     }
 
-    public function updateJob(string $id, string $status, string $message)
+    public function updateJob(?string $organisationId, string $id, string $status, string $message)
     {
         $apiInstance = new JobApi($this->client::getClient(), $this->client::getConfig());
         $updateJobRequest = new UpdateJobRequest(['id' => $id, 'status' => $status, 'message' => $message]);
-        $apiInstance->updateJob($updateJobRequest);
+        $apiInstance->updateJob($updateJobRequest, $organisationId);
     }
 
     public function deleteJob(?string $organisationId, ?string $id, string $streamId, ?string $status, ?string $dueAt): void
@@ -45,7 +45,7 @@ class JobService
         $apiInstance->deleteJob($organisationId, $id, $streamId, $status, $dueAt);
     }
 
-    public function sendJobToSource(string $organisationId, string $streamId, ?string $originalJobId, ?string $settings): AsyncResponse
+    public function sendJobToSource(?string $organisationId, string $streamId, ?string $originalJobId, ?string $settings): AsyncResponse
     {
         $apiInstance = new JobApi($this->client::getClient(), $this->client::getConfig());
         $jobRequest = (new SourceJobRequest())->setStreamId($streamId)->setOriginalJobId($originalJobId)->setSettings($settings);
