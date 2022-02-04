@@ -33,11 +33,11 @@ class EventService
         return null;
     }
 
-    public function patchEvent(?UpdateEventRequest $updateEventRequest): void
+    public function patchEvent(?UpdateEventRequest $updateEventRequest, string $organisationId = null): void
     {
         if ($updateEventRequest) {
             $apiInstance = new EventApi($this->client::getClient(), $this->client::getConfig());
-            $apiInstance->updateEvent($updateEventRequest);
+            $apiInstance->updateEvent($updateEventRequest, $organisationId);
         }
     }
 
