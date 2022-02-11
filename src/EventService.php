@@ -6,6 +6,7 @@ use GuzzleHttp\Client as GuzzleClient;
 use HiCo\EventManagerClient\ApiException;
 use HiCo\EventManagerClient\Model\AsyncResponse;
 use HiCo\EventManagerClient\Model\Event;
+use HiCo\EventManagerClient\Model\PostEventRequest;
 use HiCo\EventManagerClient\Model\ReplicateEventRequest;
 use HiCo\EventManagerClient\Model\UpdateChildEventRequest;
 use HiCo\EventManagerClient\Model\UpdateEventEntityRequest;
@@ -31,6 +32,14 @@ class EventService
         }
 
         return null;
+    }
+
+    public function postEvent(string $organisationId, string $streamId, string $jobId, object $payloadIn): AsyncResponse
+    {
+        $apiInstance = new EventApi($this->client::getClient(), $this->client::getConfig());
+
+        $request = (new PostEventRequest())->setStreamId($streamId)->setJobId($jobId)->setPayloadIn($payloadIn);
+        return $apiInstance->postEvent($request, $organisationId);
     }
 
     public function patchEvent(?UpdateEventRequest $updateEventRequest, string $organisationId = null): void
