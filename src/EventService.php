@@ -9,10 +9,8 @@ use HiCo\EventManagerClient\Model\Event;
 use HiCo\EventManagerClient\Model\PostEventRequest;
 use HiCo\EventManagerClient\Model\ReplicateEventRequest;
 use HiCo\EventManagerClient\Model\UpdateChildEventRequest;
-use HiCo\EventManagerClient\Model\UpdateEventEntityRequest;
 use HiCo\EventManagerClient\Model\UpdateEventRequest;
 use HiCo\EventManagerClient\Service\EventApi;
-use HiCo\EventManagerClient\Service\EventEntityApi;
 
 class EventService
 {
@@ -68,21 +66,6 @@ class EventService
             ->setMessage($message)
             ->setDestinationId($destinationId);
         $apiInstance->updateChildEvent($request, $organisationId);
-    }
-
-    /**
-     * @param UpdateEventEntityRequest[]|null $updateEventEntities
-     *
-     * @throws ApiException
-     */
-    public function patchEventEntities(?array $updateEventEntities): void
-    {
-        if ($updateEventEntities) {
-            $apiInstance = new EventEntityApi($this->client::getClient(), $this->client::getConfig());
-            foreach ($updateEventEntities as $updateEventEntity) {
-                $apiInstance->updateEventEntity($updateEventEntity);
-            }
-        }
     }
 
     /**

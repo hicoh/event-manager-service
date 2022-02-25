@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "09eb42478c93879fafb6178ae0477a0f",
+    "content-hash": "79e1ce6404a4ae90d3e12fc788d366a5",
     "packages": [
         {
             "name": "guzzlehttp/guzzle",
@@ -331,18 +331,18 @@
         },
         {
             "name": "hicoh/event-manager-client",
-            "version": "v1.0.30",
+            "version": "v1.0.31",
             "source": {
                 "type": "git",
                 "url": "https://github.com/hicoh/event-manager-client",
-                "reference": "66c20cae21453185edd5daff3ebdc0003c2068a8"
+                "reference": "c44ae6cf7b2643c36a226e9e29f40f2f3dc4c70c"
             },
             "require": {
                 "ext-curl": "*",
                 "ext-json": "*",
                 "ext-mbstring": "*",
                 "guzzlehttp/guzzle": "^7.3",
-                "guzzlehttp/psr7": "^1.7 || ^2.0",
+                "guzzlehttp/psr7": "^2.0",
                 "php": "^7.3 || ^8.0"
             },
             "require-dev": {
@@ -380,7 +380,7 @@
                 "rest",
                 "sdk"
             ],
-            "time": "2022-02-11T14:46:01+00:00"
+            "time": "2022-02-25T11:45:12+00:00"
         },
         {
             "name": "psr/http-client",
@@ -4828,5 +4828,5 @@
         "ext-json": "*"
     },
     "platform-dev": [],
-    "plugin-api-version": "2.2.0"
+    "plugin-api-version": "2.1.0"
 }
