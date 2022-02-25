@@ -15,10 +15,10 @@ class EventEntityService
         $this->client = new Client($guzzleClient);
     }
 
-    public function patchEventEntities(UpdateEventEntityRequest $updateEventEntities, string $organisationId = null): void
+    public function patchEventEntity(UpdateEventEntityRequest $updateEventEntity, string $organisationId = null): void
     {
         $apiInstance = new EventEntityApi($this->client::getClient(), $this->client::getConfig());
-        $apiInstance->updateEventEntity($updateEventEntities, $organisationId);
+        $apiInstance->updateEventEntity($updateEventEntity, $organisationId);
     }
 
 }
