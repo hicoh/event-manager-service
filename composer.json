@@ -1,13 +1,13 @@
 {
   "name": "hicoh/event-manager-service",
-  "version": "1.0.19",
+  "version": "1.0.20",
   "description": "Event Manager Service",
   "keywords": [
     "event-manager-service"
   ],
   "require": {
     "php": "^7.4.0",
-    "hicoh/event-manager-client": "v1.0.31",
+    "hicoh/event-manager-client": "v1.0.32",
     "ext-json": "*"
   },
   "require-dev": {

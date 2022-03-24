@@ -32,10 +32,12 @@ class JobService
         return $apiInstance->createJob($jobRequest);
     }
 
-    public function updateJob(?string $organisationId, string $id, string $status, string $message, bool $finished = false)
+    public function updateJob(?string $organisationId, string $streamId, string $id, string $status, string $message, bool $finished = false)
     {
         $apiInstance = new JobApi($this->client::getClient(), $this->client::getConfig());
-        $updateJobRequest = new UpdateJobRequest(['id' => $id, 'status' => $status, 'message' => $message, 'finished' => $finished]);
+        $updateJobRequest = new UpdateJobRequest(
+            ['streamId' => $streamId, 'id' => $id, 'status' => $status, 'message' => $message, 'finished' => $finished]
+        );
         $apiInstance->updateJob($updateJobRequest, $organisationId);
     }
 
