@@ -47,24 +47,23 @@ test:	## Run Unit Tests
 	@docker-compose exec app php ./vendor/bin/phpunit
 
 ## Create a new release
-checkout:	## Checkout master branch
-	@echo "============ Checkout master branch ============"
-	git checkout master && git pull
 release:
 	@echo "============ Create release branch ============"
 	git branch -m "release-v$(PACKAGE_VERSION)"
-tag:
-	@echo "============ Tag creation ============"
-	git tag -a "v$(PACKAGE_VERSION)" -m "Release v$(PACKAGE_VERSION)"
+
 commit:
 	@echo "============ Release building  ============"
 	git add .
 	git commit -m "Release v$(PACKAGE_VERSION)"
 
+tag:
+	@echo "============ Tag creation ============"
+	git tag -a "v$(PACKAGE_VERSION)" -m "Release v$(PACKAGE_VERSION)"
+
 version: release commit tag	## Push new version to github
 	@echo "============ Push version to origin ============"
 	git push origin "release-v$(PACKAGE_VERSION)" --tags
-	git checkout master
+
 
 .PHONY: help
 help: ## Show this help.
